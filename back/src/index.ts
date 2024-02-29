@@ -1,9 +1,7 @@
-type Coordenada = [number, number];
+import server from "./server";
+import { PORT } from "./config/envs";
 
-const ubicacion: Coordenada = [40.7128, -74.0060];
-
-const imprimirCordenada = (coordenada: Coordenada):string=>{
-    return `Latitud: ${coordenada[0]}, Longitud: ${coordenada[1]}`;
-}
-
-console.log(imprimirCordenada(ubicacion));
+server.listen(PORT, ()=>{
+    console.log(`server listening on port ${PORT}, WASAAAAA`);
+    
+})
