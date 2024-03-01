@@ -5,3 +5,5 @@ export interface Appointment {
     userId: number;
     status: "active" | "cancelled";
   }
+
+  //    :::Appointment === turns(en cualquier referencia):::

@@ -14,7 +14,7 @@ router.get("/turns", getAllTurns);
 
 router.get("/turns/:id", getTurnById);
 
-router.post("/turns/schedule", createTurn);
+router.post("/turns/createTurn", createTurn);
 
 router.put("/turns/cancel/:id", cancelTurn);
 
