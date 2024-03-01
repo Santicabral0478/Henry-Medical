@@ -1,15 +1,30 @@
+// controllers/turnControllers.ts
 import { Request, Response } from "express";
+import { appointmentService } from "../services/turnService";
 
 export const getAllTurns = (req: Request, res: Response) => {
-  res.send("*-Obteniendo todos los turnos Registrados correctamente-*"); };
+  const turns = appointmentService.getAllAppointments();
+  res.status(200).json(turns);
+};
 
 export const getTurnById = (req: Request, res: Response) => {
-  const turnId = req.params.id;
-  res.send(`*-Obteniendo un turno por id especifico: ${turnId}-*`); };
+  const turnId = parseInt(req.params.id);
+  const turn = appointmentService.getAppointmentById(turnId);
+  if (turn) {
+    res.status(200).json(turn);
+  } else {
+    res.status(404).json({ message: "Turn not found" });
+  }
+};
 
 export const createTurn = (req: Request, res: Response) => {
-  res.send("*-Crear un nuevo turno-*"); };
+  const { date, time, userId } = req.body;
+  appointmentService.createAppointment(date, time, userId);
+  res.status(201).json({ message: "Turn created successfully" });
+};
 
 export const cancelTurn = (req: Request, res: Response) => {
-  const turnId = req.params.id;
-  res.send(`*-Cancelando un turno determinado ${turnId}-*`); };
+  const turnId = parseInt(req.params.id);
+  appointmentService.cancelAppointment(turnId);
+  res.status(200).json({ message: "Turn cancelled successfully" });
+};

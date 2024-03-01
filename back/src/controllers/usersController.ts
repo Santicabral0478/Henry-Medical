@@ -1,11 +1,24 @@
+// controllers/userControllers.ts
 import { Request, Response } from "express";
+import { userService } from "../services/userService";
 
 export const getAllUsers = (req: Request, res: Response) => {
-  res.send("*-Obtener a todos los usuarios registrados correctamente-*"); };
+  const users = userService.getAllUsers();
+  res.status(200).json(users);
+};
 
 export const getUserById = (req: Request, res: Response) => {
-  const userId = req.params.id;
-  res.send(`*-Obtener un usuario especifico por su id: ${userId}-*`); };
+  const userId = parseInt(req.params.id);
+  const user = userService.getUserById(userId);
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).json({ message: "User not found" });
+  }
+};
 
 export const createUser = (req: Request, res: Response) => {
-  res.send("*-Crear un usuario nuevo-*"); };
+  const { name, email, birthdate, nDni, username, password } = req.body;
+  userService.createUser(name, email, birthdate, nDni, username, password);
+  res.status(201).json({ message: "User created successfully" });
+};
