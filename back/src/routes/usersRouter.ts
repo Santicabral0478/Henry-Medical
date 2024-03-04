@@ -1,15 +1,10 @@
-// GET /users => obtener todos los usuarios
-// GET /users/:id => Obtener a un usuario por ID
-
-//POST /user/register => Crear un nuevo usuario
-
+// usersRouter.ts
 import { Router } from "express";
-import { getAllUsers, getUserById, createUser } from "../controllers/usersController";
+import { createUser, getUsers } from "../controllers/userController";
 
 const router: Router = Router();
 
-router.get("/users", getAllUsers);
-router.get("/users/:id", getUserById);
-router.post("/user/register", createUser);
+router.post("/users/register", createUser);
+router.get("/users", getUsers);
 
 export default router;

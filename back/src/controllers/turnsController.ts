@@ -1,30 +1,19 @@
-// controllers/turnControllers.ts
-import { Request, Response } from "express";
-import { appointmentService } from "../services/turnService";
+import{Request, Response} from "express";
+import{createTurnService, getTurnsService} from "../services/turnsService"
 
-export const getAllTurns = (req: Request, res: Response) => {
-  const turns = appointmentService.getAllAppointments();
-  res.status(200).json(turns);
+
+export const getTurns = async (req:Request, res:Response) =>{
+    const turns = await getTurnsService();
+    return res.status(200).json(turns);
 };
 
-export const getTurnById = (req: Request, res: Response) => {
-  const turnId = parseInt(req.params.id);
-  const turn = appointmentService.getAppointmentById(turnId);
-  if (turn) {
-    res.status(200).json(turn);
-  } else {
-    res.status(404).json({ message: "Turn not found" });
-  }
-};
-
-export const createTurn = (req: Request, res: Response) => {
-  const { date, time, userId } = req.body;
-  appointmentService.createAppointment(date, time, userId);
-  res.status(201).json({ message: "Turn created successfully" });
-};
-
-export const cancelTurn = (req: Request, res: Response) => {
-  const turnId = parseInt(req.params.id);
-  appointmentService.cancelAppointment(turnId);
-  res.status(200).json({ message: "Turn cancelled successfully" });
+export const createTurns = async (req:Request, res:Response) =>{
+    const {date, time, userId, status} = req.body;
+    const newTurn = await createTurnService({
+        date,
+        time,
+        userId,
+        status,
+    });
+    return res.status(201).json(newTurn);
 };
