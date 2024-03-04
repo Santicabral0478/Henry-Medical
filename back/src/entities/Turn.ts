@@ -16,9 +16,10 @@ export class Turn {
     @Column()
     time: string;
 
+
     @Column()
     status: "active" | "cancelled";
 
-    @ManyToOne(() => User, user => user.turns)
-    users: User[]; // Definir la propiedad 'users' en la clase Turn
+    @ManyToOne(() => User, (user) => user.turns)
+    users: User; // Definir la propiedad 'users' en la clase Turn
 }

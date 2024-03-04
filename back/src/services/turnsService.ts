@@ -18,7 +18,7 @@ export const createTurnService = async (turn: TurnDto): Promise<Turn> =>{
     })
 
     if(user){
-        newTurn.users = [user];
+        newTurn.users = user;
         await TurnModel.save(newTurn);
     }
 

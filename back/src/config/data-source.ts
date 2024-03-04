@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     database: "henry_demo",
     // dropSchema: true,
     synchronize: true,
-    logging: true,
+    logging: false,
     entities: [User, Turn],
     subscribers: [],
     migrations: [],
@@ -19,4 +19,3 @@ export const AppDataSource = new DataSource({
 
 export const UserModel = AppDataSource.getRepository(User);
 export const TurnModel = AppDataSource.getRepository(Turn);
-
