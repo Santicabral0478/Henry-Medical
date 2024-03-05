@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { createUserService, getUsersService, getUserByIdService, loginUserService } from "../services/userService";
 import { User } from "../entities/User";
 import UserDto from "../dto/UserDto"; 
+import CredentialDto from "../dto/CredentialDto";
 
 // :::get a specific user:::
 export const getUserById = async (req: Request, res: Response) => {
@@ -27,16 +28,19 @@ export const createUser = async (req: Request, res: Response) => {
     try {
         const { name, email, birthdate, nDni, username, password } = req.body;
 
+        const credentialData: CredentialDto = {
+            username,
+            password,
+        }
+
         const userData: UserDto = {
             name,
             email,
             birthdate,
             nDni,
-            username, 
-            password 
         };
 
-        const newUser: User = await createUserService(userData);
+        const newUser: User = await createUserService(userData, credentialData);
 
         res.status(201).json(newUser);
     } catch (error) {

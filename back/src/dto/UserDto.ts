@@ -3,8 +3,8 @@ interface UserDto {
     email: string;
     birthdate: string;
     nDni: string;
-    username: string; 
-    password: string;
+    // username: string; 
+    // password: string;
 }
 
 export default UserDto;

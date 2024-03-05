@@ -2,22 +2,22 @@ import UserDto from "../dto/UserDto";
 import { UserModel } from "../config/data-source";
 import { User } from "../entities/User";
 import { Credential } from "../entities/Credential";
+import CredentialDto from "../dto/CredentialDto";
 
 
 export const getUserByIdService = async (id: number): Promise<User | null> => {
     try {
         const user: User | null = await UserModel.findOne({
-            where: { id },
-            relations: ["turns"] 
+            where: { id }, relations:{ turns: true }
         });
-        return user || null;
+        return user;
     } catch (error) {
         console.error("Error retrieving user by ID:", error);
         throw new Error("Error retrieving user by ID");
     }
 };
 
-export const createUserService = async (userData: UserDto): Promise<User> => {
+export const createUserService = async (userData: UserDto, credentialData: CredentialDto): Promise<User> => {
     try {
         const user = new User();
         user.name = userData.name;
@@ -28,8 +28,8 @@ export const createUserService = async (userData: UserDto): Promise<User> => {
         await UserModel.save(user);
 
         const credential = new Credential();
-        credential.username = userData.username;
-        credential.password = userData.password;
+        credential.username = credentialData.username;
+        credential.password = credentialData.password;
 
         user.credential = credential;
 
@@ -65,9 +65,7 @@ export const loginUserService = async (username: string, password: string): Prom
 export const getUsersService = async(): Promise<User[]> =>{
     const users = await UserModel.find(
         {
-            relations:{
-                turns: true
-            }
+            relations:{ turns: true }
         }
     ); 
     return users;
