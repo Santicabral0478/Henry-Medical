@@ -1,18 +1,66 @@
 import UserDto from "../dto/UserDto";
-import { AppDataSource, UserModel } from "../config/data-source";
+import { UserModel } from "../config/data-source";
 import { User } from "../entities/User";
+import { Credential } from "../entities/Credential";
 
-export const createUserService = async(userData: UserDto) =>{
-    const user = await UserModel.create(userData);
-    const result = await UserModel.save(user);
-    return user;
+
+export const getUserByIdService = async (id: number): Promise<User | null> => {
+    try {
+        const user: User | null = await UserModel.findOne({
+            where: { id },
+            relations: ["turns"] 
+        });
+        return user || null;
+    } catch (error) {
+        console.error("Error retrieving user by ID:", error);
+        throw new Error("Error retrieving user by ID");
+    }
 };
 
-export const getUserByIdService = async(id:number): Promise<User|null>=>{
-    const user = await UserModel.findOneBy({id});
-    return user;
-}
+export const createUserService = async (userData: UserDto): Promise<User> => {
+    try {
+        const user = new User();
+        user.name = userData.name;
+        user.email = userData.email;
+        user.birthdate = userData.birthdate;
+        user.nDni = userData.nDni;
 
+        await UserModel.save(user);
+
+        const credential = new Credential();
+        credential.username = userData.username;
+        credential.password = userData.password;
+
+        user.credential = credential;
+
+        await UserModel.manager.save(credential);
+
+        await UserModel.manager.save(user);
+
+        return user;
+    } catch (error) {
+        console.error("Error creating user:", error);
+        throw new Error("Error creating user");
+    }
+};
+
+export const loginUserService = async (username: string, password: string): Promise<User | null> => {
+    try {
+        const user: User | null = await UserModel.findOne({
+            where: { credential: { username, password } },
+            relations: ["credential"]
+        });
+
+        if (user) {
+            return user;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error("Error logging in user:", error);
+        throw new Error("Error logging in user");
+    }
+};
 
 export const getUsersService = async(): Promise<User[]> =>{
     const users = await UserModel.find(
@@ -24,6 +72,3 @@ export const getUsersService = async(): Promise<User[]> =>{
     ); 
     return users;
 };
-
-
-
