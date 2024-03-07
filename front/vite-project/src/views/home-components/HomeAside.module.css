@@ -19,26 +19,26 @@
     grid-area: 1 / 1 / 2 / 2; 
     background: rgb(65,235,233);
     background: linear-gradient(-36deg, rgba(65,235,233,1) 0%, rgba(95,178,221,1) 100%); 
-    border: 2px solid rgb(128, 193, 225);
+    border: 1px solid rgb(108, 224, 232);
 }
     
 
 .GralItem2 { 
     grid-area: 1 / 2 / 2 / 3; 
-    background: rgb(155,251,135);
     background: linear-gradient(66deg, rgba(155,251,135,1) 0%, rgba(95,221,99,1) 100%); 
-    border: 2px solid rgb(131, 223, 134);
+    border: 1px solid rgb(132, 255, 136);
 }
 
 .GralItem3 { 
     grid-area: 2 / 2 / 3 / 3;
-    background: rgb(254,204,110);
     background: linear-gradient(36deg, rgba(254,204,110,1) 0%, rgba(252,166,105,1) 100%); 
     border: 2px solid rgb(231, 176, 138);
 }
 
 .GralItem4 { 
     grid-area: 2 / 1 / 3 / 2; 
+    background: linear-gradient(-36deg, rgb(230, 91, 91) 0%, rgb(232, 142, 142) 100%); 
+    border: 1px solid rgb(227, 177, 177);
 }
 
 .GralItem5 { 

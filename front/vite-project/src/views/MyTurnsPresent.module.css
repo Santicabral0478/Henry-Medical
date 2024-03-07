@@ -1,0 +1,7 @@
+.CardTurnGralCont{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 50%;
+}
