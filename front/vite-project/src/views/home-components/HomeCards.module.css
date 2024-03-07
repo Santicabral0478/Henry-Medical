@@ -1,0 +1,15 @@
+
+.CardTI{
+    width: 100%;
+    background-color: #c5c5c5;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius:16px ;
+}
+
+.CardTI img{
+    width: 16rem;
+    border-radius: 13px;
+}

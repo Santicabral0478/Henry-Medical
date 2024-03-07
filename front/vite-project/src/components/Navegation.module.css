@@ -1,0 +1,18 @@
+.navegationlistpr{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.navegationlistpr span{
+    color: #202020;
+    padding: .2rem .7rem;
+    border-radius: 24px;
+    transition: all.3s ease-in-out;
+}
+
+.navegationlistpr span:hover{
+    color: #000d72;
+    cursor: pointer;
+    box-shadow: -3px 3px 19px -4px rgba(0, 0, 0, 0.401);
+}

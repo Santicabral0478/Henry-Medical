@@ -1,0 +1,13 @@
+.linkporfilecont img{
+    width: 4rem;
+    border: 1px solid #808080;
+    border-radius: 50%;
+    box-shadow: 0px 0px 31px -10px rgba(0,0,0,0.75);
+    transition: all .3s ease-in;
+}
+
+.linkporfilecont img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0px 0px 27px 1px rgba(31, 80, 255, 0.655);
+}
