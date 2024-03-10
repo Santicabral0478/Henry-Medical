@@ -58,7 +58,12 @@ export const cancelTurnService = async (id: number): Promise<boolean> => {
     }
 };
 
-export const getTurnsService = async (): Promise<Turn[]> =>{
-    const turns = await TurnModel.find();
-    return turns;
-}
+export const getTurnsService = async (): Promise<Turn[]> => {
+    try {
+        const turns = await TurnModel.find({ relations: ["user"] });
+        return turns;
+    } catch (error) {
+        console.error("Error retrieving turns:", error);
+        throw new Error("Error retrieving turns");
+    }
+};

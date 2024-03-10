@@ -1,0 +1,40 @@
+.SubNavBarCont{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+.SubNavBarContElement{
+    padding: 1.2rem;
+    text-align: center;
+    border-radius: 12px;
+    background: rgb(229,229,230);
+    background: linear-gradient(214deg, rgba(229,229,230,1) 0%, rgb(201, 212, 222) 100%); 
+    box-shadow: 0px 0px 23px -4px rgba(0, 0, 0, 0.372);
+    border: 1px solid #f2f2f2;
+}
+
+.SubNavBarContElement1{
+    grid-area: 1 / 1 / 2 / 2;
+    background: rgb(235,148,148);
+    background: linear-gradient(214deg, rgba(235,148,148,1) 0%, rgb(221, 102, 102) 100%); 
+    border: 1px solid #f9a9a9;
+}
+.SubNavBarContElement2{
+    grid-area: 1 / 2 / 2 / 3;
+}
+.SubNavBarContElement3{
+    grid-area: 1 / 3 / 2 / 4;
+}
+.SubNavBarContElement4{
+    grid-area: 1 / 4 / 2 / 5;
+}
+.SubNavBarContElement5{
+    grid-area: 1 / 5 / 2 / 6;
+}
+.SubNavBarContElement6{
+    grid-area: 1 / 6 / 2 / 7;
+}

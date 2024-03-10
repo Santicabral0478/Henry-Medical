@@ -67,7 +67,12 @@ export const cancelTurn = async (req: Request, res: Response) => {
 };
 
 // :::get all turns:::
-export const getTurns = async (req:Request, res:Response) =>{
-    const turns = await getTurnsService();
-    return res.status(200).json(turns);
+export const getTurns = async (req: Request, res: Response) => {
+    try {
+        const turns = await getTurnsService();
+        return res.status(200).json(turns);
+    } catch (error) {
+        console.error("Error retrieving turns:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
 };
