@@ -1,4 +1,5 @@
 import './App.css'
+import {Routes, Route} from "react-router-dom"
 import Home from './views/Home'
 import Navbar from './components/Navbar'
 import MyTurnsPresent from './views/MyTurnsPresent';
@@ -10,12 +11,17 @@ function App() {
   return (
     <>
     {/* <Register/> */}
-    {/* <Login/> */}
+    {/* <Login/>  */}
      <Navbar/>
-     <SubNavBar/>
-     <Home/>
+    <Routes>
+      {/* <Route path='/' element={<Register/>}/> */}
+      {/* <Route path='/' element={<Login/>}/> */}
+      <Route path='/home' element={<Home/>}/>
+      <Route path='/turns' element={<MyTurnsPresent/>}/>
+    </Routes>
 
-     <MyTurnsPresent/>
+     {/* <SubNavBar/> */}
+
     </>
   )
 }
