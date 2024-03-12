@@ -2,9 +2,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import medical from "../assets/medical.jpg"
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./Login.css"
 
 function LoginForm() {
+  const navigate = useNavigate();
+
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
@@ -15,17 +19,13 @@ function LoginForm() {
           .required('Password is required')
       })}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        // Verificar si hay errores de validación
         if (!Object.keys(values).every(key => !values[key])) {
-          // Realizar la solicitud POST a la API de login utilizando Axios
           axios.post('http://localhost:3005/users/login', values)
             .then(response => {
               if (response.data.login) {
-                // Si el login es exitoso, mostrar un alert
-                alert('¡Estás dentro de la página!');
+                navigate("/home");
                 resetForm();
               } else {
-                // Si el login falla, mostrar un mensaje de error
                 alert('Usuario o contraseña inválidos');
               }
               setSubmitting(false);
@@ -54,8 +54,8 @@ function LoginForm() {
               </button>
               <span className="forgot-password"><a href="#">Forgot Password ?</a></span>
              <div className="register-btn-container">
-                <a className='register-button'>New?
-                </a>
+                <Link to="/register" className='register-button'>New?
+                </Link>
              </div>
             </Form>
           </div>

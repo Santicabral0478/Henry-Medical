@@ -1,10 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios'; // Importamos Axios
+import axios from 'axios'; 
+import { Link } from "react-router-dom";
 import medical from "../assets/medical.jpg"
+import { useNavigate } from 'react-router-dom';
 import "./Login.css"
 
 function Register() {
+  const navigate = useNavigate();
   return (
     <Formik
       initialValues={{
@@ -46,13 +49,11 @@ function Register() {
       onSubmit={(values, { setSubmitting }) => {
         axios.post('http://localhost:3005/users/register', values) // Enviamos la solicitud POST
           .then(response => {
-            // Manejamos la respuesta aquí
             console.log('Registro exitoso:', response.data);
-            alert('Usuario registrado exitosamente');
+            navigate("/");
             setSubmitting(false);
           })
           .catch(error => {
-            // Manejamos los errores aquí
             console.error('Error al registrar usuario:', error);
             alert('Error al registrar usuario');
             setSubmitting(false);
@@ -110,7 +111,7 @@ function Register() {
               <button className='register-button' type="submit">
                Register 
               </button>
-              <span className="forgot-password"><a href="#">Have you account?</a></span>
+              <span className="forgot-password"><Link to="/">Have you account?</Link></span>
             </Form>
           </div>
         </div>
