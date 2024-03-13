@@ -1,13 +1,17 @@
+// Login.jsx
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import medical from "../assets/medical.jpg"
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux'; 
+import { setUser } from '../redux/userSlice'; 
 import "./Login.css"
 
 function LoginForm() {
   const navigate = useNavigate();
+  const dispatch = useDispatch(); 
 
   return (
     <Formik
@@ -23,6 +27,7 @@ function LoginForm() {
           axios.post('http://localhost:3005/users/login', values)
             .then(response => {
               if (response.data.login) {
+                dispatch(setUser(response.data.user));
                 navigate("/home");
                 resetForm();
               } else {
@@ -38,11 +43,12 @@ function LoginForm() {
         }
       }}
     >
-      {({ isSubmitting }) => (
+
+{({ isSubmitting }) => (
         <div className="gralFormContainer">
           <div className="container">
             <Form className='form'>
-              <div className="heading"><img src={medical} alt="" /><span>Wellcome!</span></div>
+              <div className="heading"><img src={medical} alt="" /><span>Welcome!</span></div>
 
               <Field className="input" type="text" name="username" id="username" placeholder="Username"/>
               <ErrorMessage name="username" component="p" className='errorMessagePass' />
@@ -61,6 +67,8 @@ function LoginForm() {
           </div>
         </div>
       )}
+
+
     </Formik>
   );
 }

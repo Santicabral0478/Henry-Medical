@@ -64,7 +64,7 @@ function Register() {
         <div className="gralFormContainer">
           <div className="container-reg">
             <Form className='form-reg'>
-              <div className="heading"><img src={medical} alt="" /><span>Wellcome!</span></div>
+              <div className="heading"><img src={medical} alt="" /><span>Welcome!</span></div>
 
               <div className="input-flex">
                 <div className="input-container">
