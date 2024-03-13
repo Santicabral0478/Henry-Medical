@@ -10,6 +10,7 @@ import Register from './views/Register';
 import ErrorPage from './views/ErrorPage';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import RegisterTurn from './views/RegisterTurn';
 
 function App() {
   const location = useLocation()
@@ -23,6 +24,7 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/home' element={<Home />} />
           <Route path='/turns' element={<MyTurnsPresent />} />
+          <Route path='/newturn' element={<RegisterTurn/>} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </>

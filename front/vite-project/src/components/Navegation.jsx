@@ -5,9 +5,9 @@ const Navegation = ()=>{
     return (<>      
        <div className={styles.navegationlistpr}>      
             <Link to="/home">Home</Link>      
-            <Link to="/turns">Turns</Link>      
+            <Link to="/turns">Turns</Link>
+            <Link to="/newturn">New Turn</Link>
        </div>      
     </>)      
 }      
-      
 export default Navegation;
