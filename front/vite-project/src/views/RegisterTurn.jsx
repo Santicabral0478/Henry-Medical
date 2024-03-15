@@ -1,3 +1,4 @@
+// views/RegisterTurn.jsx
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -9,7 +10,7 @@ import "./Login.css"
 
 function RegisterTurn() {
   const navigate = useNavigate();
-  const userId = useSelector(state => state.user.user.id);
+  const userId = useSelector(state => state.user && state.user.user ? state.user.user.id : null);
 
   const handleSubmit = (values, { setSubmitting }) => {
     const data = { ...values, userId };
@@ -61,8 +62,8 @@ function RegisterTurn() {
 
             <button className='register-button' type="submit">
               Programar Turno
-            </button>
-            <span className="forgot-password"><Link to="/">Volver</Link></span>
+            </button> 
+            <span className="forgot-password"><Link to="/turns">Volver</Link></span>
           </Form>
         </div>
       </div>

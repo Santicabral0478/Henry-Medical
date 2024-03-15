@@ -1,3 +1,4 @@
+//views/Home.jsx
 import HomeCards from "./home-components/HomeCards"
 import HomeAside from "./home-components/HomeAside"
 import styles from "./Home.module.css"

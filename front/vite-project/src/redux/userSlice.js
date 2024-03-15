@@ -1,7 +1,7 @@
-// redux/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// Acción asincrónica para obtener los turnos del usuario
 export const fetchUserTurns = createAsyncThunk('user/fetchUserTurns', async (_, { getState }) => {
   const { user } = getState().user;
   const response = await axios.get(`http://localhost:3005/users/${user.id}`);
@@ -17,8 +17,10 @@ const userSlice = createSlice({
     turns: [], 
   },
   reducers: {
+    // Acción para establecer la información del usuario en el estado
     setUser: (state, action) => {
       state.user = action.payload;
+      console.log("Usuario almacenado en el estado global:", action.payload);
     },
   },
   extraReducers: builder => {
@@ -37,6 +39,8 @@ const userSlice = createSlice({
   },
 });
 
+// Exportar la acción setUser
 export const { setUser } = userSlice.actions;
 
+// Exportar el reductor
 export default userSlice.reducer;
