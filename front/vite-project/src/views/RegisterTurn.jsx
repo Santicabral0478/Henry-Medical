@@ -17,7 +17,7 @@ function RegisterTurn() {
     axios.post('http://localhost:3005/turns/schedule', data)
       .then(response => {
         console.log('Turno programado exitosamente:', response.data);
-        navigate("/");
+        navigate("/turns");
         setSubmitting(false);
       })
       .catch(error => {

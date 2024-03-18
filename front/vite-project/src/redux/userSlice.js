@@ -1,3 +1,4 @@
+// redux/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -44,3 +45,5 @@ export const { setUser } = userSlice.actions;
 
 // Exportar el reductor
 export default userSlice.reducer;
+
+

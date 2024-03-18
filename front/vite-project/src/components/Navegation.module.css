@@ -1,17 +1,25 @@
-.navegationlistpr{
+.navigationList {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
 }
 
-.navegationlistpr a{
+.navigationList > a {
     color: #202020;
     padding: .2rem .7rem;
     border-radius: 24px;
-    transition: all.3s ease-in-out;
+    transition: all 0.3s ease-in-out; /* Corregido el punto .3s */
+    text-decoration: none; /* Añadido para quitar subrayado predeterminado */
 }
 
-.navegationlistpr a:hover{
+.navigationList button {
+    padding: 6px 9px;
+    border-radius: 2rem;
+    border: 1px solid #8a8a8a; 
+}
+
+.navigationList > a:hover {
     color: #000d72;
     cursor: pointer;
     box-shadow: -3px 3px 19px -4px rgba(0, 0, 0, 0.401);

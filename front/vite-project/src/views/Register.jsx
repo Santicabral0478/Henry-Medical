@@ -1,4 +1,4 @@
-//Register.jsx
+//views/Register.jsx
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios'; 
