@@ -30,7 +30,7 @@
   background: #f8f9fd;
   background: linear-gradient( 33deg, rgb(240, 240, 240) 0%, rgb(237, 245, 255) 100% );
   border-radius: 40px;
-  padding: 25px 35px;
+  padding: 10px 35px;
   border: 2px solid rgb(255, 255, 255);
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
   transition: all .3s ease-in-out;

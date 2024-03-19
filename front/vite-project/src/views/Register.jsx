@@ -1,4 +1,5 @@
-//views/Register.jsx
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios'; 
@@ -17,14 +18,16 @@ function Register() {
         birthdate: '',
         nDni: '',
         username: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       }}
       validationSchema={Yup.object({
         name: Yup.string()
-    .required('Name is required')
-    .matches(
-        /^[a-zA-Z]+(?: [a-zA-Z]+)+$/,
-        'Invalid name'),
+          .required('Name is required')
+          .matches(
+            /^[a-zA-Z]+(?: [a-zA-Z]+)+$/,
+            'Invalid name'
+          ),
         email: Yup.string()
           .email('Invalid email format')
           .required('Email is required'),
@@ -46,6 +49,9 @@ function Register() {
             /^(?=.*[A-Z])(?=.*\d)/,
             'Password must contain at least one uppercase letter and one number'
           ),
+        confirmPassword: Yup.string()
+          .required('Confirm Password is required')
+          .oneOf([Yup.ref('password'), null], 'Passwords must match')
       })}
       onSubmit={(values, { setSubmitting }) => {
         axios.post('http://localhost:3005/users/register', values)
@@ -109,6 +115,14 @@ function Register() {
                 </div>
               </div>
 
+              <div className="input-flex">
+                <div className="input-container">
+                  <span indeic-reg className='indic-input'>Confirm Password</span>
+                  <Field className="input" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password"/>
+                  <ErrorMessage name="confirmPassword" component="p" className='errorMessagePass-reg'/>
+                </div>
+              </div>
+
               <button className='register-button' type="submit">
                Register 
               </button>
@@ -118,10 +132,7 @@ function Register() {
         </div>
    
     </Formik>
-
-
-
   );
 }
 
-export default Register;
+export default Register; 

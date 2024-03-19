@@ -10,12 +10,12 @@ import "./Login.css";
 function RegisterTurn() {
   const navigate = useNavigate();
   const userId = useSelector(state => state.user && state.user.user ? state.user.user.id : null);
-  const isAuthenticated = useSelector(state => !!state.user.user); // Verificar si el usuario está autenticado
+  const isAuthenticated = useSelector(state => !!state.user.user); 
   const [minDate, setMinDate] = useState(new Date());
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate("/home"); // Redirigir al usuario a la página de inicio de sesión si no está autenticado
+      navigate("/home"); 
     }
     const today = new Date();
     setMinDate(today);
@@ -47,7 +47,7 @@ function RegisterTurn() {
           .test('is-valid-date', 'La fecha no puede ser anterior al día actual', value => {
             const selectedDate = new Date(value);
             const currentDate = new Date();
-            currentDate.setHours(0, 0, 0, 0); // Establecer la hora actual a las 00:00:00
+            currentDate.setHours(0, 0, 0, 0); 
             return selectedDate >= currentDate;
           }),
         time: Yup.string()

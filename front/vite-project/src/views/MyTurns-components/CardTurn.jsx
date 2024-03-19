@@ -11,7 +11,7 @@ const CardTurn = ({ turn, onTurnCancelled }) => {
       try {
         await axios.put(`http://localhost:3005/turns/cancel/${id}`);
         alert('Turno cancelado exitosamente');
-        onTurnCancelled(); // Emitir la señal de cancelación del turno
+        onTurnCancelled(); 
       } catch (error) {
         console.error('Error al cancelar turno:', error);
         alert('Error al cancelar turno');
