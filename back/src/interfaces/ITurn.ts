@@ -4,4 +4,5 @@ export interface Appointment {
   time: string;
   userId: number;
   status: "active" | "cancelled";
+  details: string;
 }

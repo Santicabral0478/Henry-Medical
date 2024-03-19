@@ -24,14 +24,15 @@ export const getTurnById = async (req: Request, res: Response) => {
 // :::register a turn:::
 export const createTurns = async (req: Request, res: Response) => {
     try {
-        const { date, time, userId } = req.body;
+        const { date, time, userId, details } = req.body;
 
         // Creamos un nuevo turno con status "active"
         const newTurn: TurnDto = {
             date,
             time,
             userId,
-            status: "active" // La propiedad status siempre será "active"
+            status: "active",
+            details
         };
 
         // Llamar a la función de servicio para crear el turno

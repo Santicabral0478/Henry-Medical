@@ -48,7 +48,7 @@ function Register() {
           ),
       })}
       onSubmit={(values, { setSubmitting }) => {
-        axios.post('http://localhost:3005/users/register', values) // Enviamos la solicitud POST
+        axios.post('http://localhost:3005/users/register', values)
           .then(response => {
             console.log('Registro exitoso:', response.data);
             navigate("/");

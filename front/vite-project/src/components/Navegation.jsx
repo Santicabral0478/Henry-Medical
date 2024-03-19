@@ -1,3 +1,4 @@
+// components/Navegation.jsx
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -10,8 +11,6 @@ const Navegation = () => {
   const handleLogout = () => {
     const logoutConfirmed = window.confirm("Are you sure you want to log out?");
     if (logoutConfirmed) {
-      // Lógica para cerrar sesión y redirigir al usuario al login
-      // Por ahora, solo redirigimos al usuario al login
       navigate("/");
     }
   };
